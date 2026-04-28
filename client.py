@@ -4,7 +4,7 @@ import Demo
 with Ice.initialize(sys.argv) as communicator:
 
     # --- Printer object ---
-    base = communicator.stringToProxy("SimplePrinter:tcp -h <SERVER_PRIVATE_IP> -p 11000")
+    base = communicator.stringToProxy("SimplePrinter:tcp -h 172.31.20.106 -p 11000")
     printer = Demo.PrinterPrx.checkedCast(base)
     if not printer:
         raise RuntimeError("Invalid proxy for Printer")
@@ -16,7 +16,7 @@ with Ice.initialize(sys.argv) as communicator:
     print("countChars:", n)
 
     # --- Calculator object (new server object) ---
-    base2 = communicator.stringToProxy("SimpleCalc:tcp -h <SERVER_PRIVATE_IP> -p 11000")
+    base2 = communicator.stringToProxy("SimpleCalc:tcp -h 172.31.20.106 -p 11000")
     calc = Demo.CalculatorPrx.checkedCast(base2)
     if not calc:
         raise RuntimeError("Invalid proxy for Calculator")
